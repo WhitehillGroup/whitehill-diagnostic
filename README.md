@@ -14,4 +14,4 @@
 > [!NOTE]
 > To-Do:
 > - On management approval, add a function for sharing product settings.
-> - Transfer `resultstring` into Base10 for easy readability and code in Axon command for turning that code into english readable game issues for support agents.
+> - Axon command for turning support codes into english readable game issues for support agents.

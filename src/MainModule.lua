@@ -450,6 +450,9 @@ function diag.runDiagnostics()
 		resultsstring = resultsstring..tostring(v)
 	end
 
+	resultsstring = tonumber(resultsstring,2)
+	resultsstring = resultsstring.."-"..rnum
+
 	-- display code + title
 	gui.Background.Window.SupportCode.Code.Text = resultsstring
 	gui.Background.Window.SupportCode.Title.Visible = true
