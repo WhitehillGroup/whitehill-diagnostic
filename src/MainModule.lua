@@ -472,16 +472,17 @@ function diag.runDiagnostics()
 	table.clear(heldLicenses)
 end
 
-gui.Background.Window.SelectionButtons.Approve:Connect() = function()
+gui.Background.Window.SelectionButtons.Approve:Connect(function()
 	if ButtonState[1] ~= nil then
-		ButtonState[2] == true
+		ButtonState[2] = true
 	end
-end
+end)
 
-gui.Background.Window.SelectionButtons.Deny:Connect() = function()
+gui.Background.Window.SelectionButtons.Deny:Connect(function()
 	if ButtonState[1] ~= nil then
-		ButtonState[2] == false
+		ButtonState[2] = false
 	end
-end
+end)
+
 
 return diag
