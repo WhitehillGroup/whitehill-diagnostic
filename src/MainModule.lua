@@ -453,6 +453,7 @@ function diag.runDiagnostics()
 	-- display code + title
 	gui.Background.Window.SupportCode.Code.Text = resultsstring
 	gui.Background.Window.SupportCode.Title.Visible = true
+	gui.Background.Window.SupportCode.Title.Text = "Please send this code to your support agent:"
 	gui.Background.Window.SupportCode.Code.Visible = true
 
 	status.Text = "Diagnostic Complete"
