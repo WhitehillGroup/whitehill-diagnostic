@@ -110,7 +110,7 @@ function diag.runDiagnostics()
 	local restricted = false
 	local wrestricted = false
 	local unpublished = false
-	
+
 	-- double check the resets if its the same session
 	LogAmt = 0
 	gui.Parent = game.CoreGui
@@ -126,8 +126,8 @@ function diag.runDiagnostics()
 	gui.Background.Window.SupportCode.Title.Visible = false
 	gui.Background.Window.SupportCode.Code.Visible = false
 	gui.Background.Window.SupportCode.Code.Text = ""
-	
-	
+
+
 	-- game publish check (printersofa + prpldev)
 	status.Text = "Checking game status..."
 	if game.CreatorId ~= 998796 and game.CreatorId ~= 0 and game.CreatorId ~= nil then
@@ -229,10 +229,10 @@ function diag.runDiagnostics()
 		gui.Background.Window.SelectionButtons.Approve.Visible = true
 		gui.Background.Window.SelectionButtons.Deny.Visible = true
 		gui.Background.Window.SupportCode.Title.Text = "Give this tool access to change <b>HTTPServices</b>?"
-		while gui.Background.Window.SelectionButtons.Approve.Visible do wait() end
+		gui.Background.Window.SupportCode.Title.Visible = true
+		while gui.Background.Window.SelectionButtons.Approve.Visible == true do wait() end
 		gui.Background.Window.SupportCode.Title.Text = ""
-		gui.Background.Window.SelectionButtons.Approve.Visible = false
-		gui.Background.Window.SelectionButtons.Deny.Visible = false
+		gui.Background.Window.SupportCode.Title.Visible = false
 		if ButtonState[2] == true then
 			game.HttpService.HttpEnabled = true
 			addItem("info","Whitehill Diagnostics has automatically enabled HTTP Requests.","blue")
@@ -245,7 +245,7 @@ function diag.runDiagnostics()
 	task.wait(2)
 	status.Text = status.Text .. " Done"
 	task.wait(1)
-	
+
 	-- axon licensing query (prpldev)
 	status.Text = "Checking Axon Licenses..."
 	local heldLicenses = {}
@@ -277,11 +277,11 @@ function diag.runDiagnostics()
 			addItem("no","Axon license check failed.","red")
 		end
 	end
-	
+
 	task.wait(2)
 	status.Text = status.Text .. " Done"
 	task.wait(1)	
-	
+
 	-- non owned but installed products check/licensing (prpldev)
 	status.Text = "Checking licenses (this could take several minutes)..."
 	if workspace:FindFirstChild("JSM | Retail POS System NO") then
@@ -334,12 +334,12 @@ function diag.runDiagnostics()
 	else
 		table.insert(resultscode,0)
 	end
-	
+
 	task.wait(2)
 	status.Text = status.Text.." Done"
 	task.wait(1)
-	
-	
+
+
 	-- product bug/setup error check (prpldev)
 	status.Text = "Checking products (this could take several minutes)..."
 	if workspace:FindFirstChild("JSM | SelfCheckout V3") then
@@ -359,11 +359,11 @@ function diag.runDiagnostics()
 	else
 		table.insert(resultscode,0)
 	end
-	
+
 	task.wait(2)
 	status.Text = status.Text.." Done"
 	task.wait(1)
-	
+
 	-- whitehill door weld check (printersofa)
 	status.Text = "Checking for welds (this could take several minutes)..."
 	local wdoors = {}
@@ -441,10 +441,10 @@ function diag.runDiagnostics()
 	task.wait(2)
 	status.Text = status.Text .. " Done"
 	task.wait(4)
-	
+
 	-- process results into a readable number by the bot and the user (todo)
 	local rnum = math.random(100,999)
-	
+
 	local resultsstring = ""
 	for i,v in pairs(resultscode) do
 		resultsstring = resultsstring..tostring(v)
@@ -458,7 +458,7 @@ function diag.runDiagnostics()
 	status.Text = "Diagnostic Complete"
 
 	addItem("info","The diagnostics check is now complete and will close in 10 seconds.","blue")
-	
+
 	-- reset stuff for next usage on game incase its the same session
 	task.wait(10)
 	for i,v in pairs(gui.Background.Window.HolderFrame.ScrollingFrame:GetChildren()) do
@@ -475,12 +475,16 @@ end
 gui.Background.Window.SelectionButtons.Approve.Activated:Connect(function()
 	if ButtonState[1] ~= nil then
 		ButtonState[2] = true
+		gui.Background.Window.SelectionButtons.Approve.Visible = false
+		gui.Background.Window.SelectionButtons.Deny.Visible = false
 	end
 end)
 
 gui.Background.Window.SelectionButtons.Deny.Activated:Connect(function()
 	if ButtonState[1] ~= nil then
 		ButtonState[2] = false
+		gui.Background.Window.SelectionButtons.Approve.Visible = false
+		gui.Background.Window.SelectionButtons.Deny.Visible = false
 	end
 end)
 
