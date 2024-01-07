@@ -1,5 +1,12 @@
 --[[
 
+██████╗░██████╗░██████╗░██╗░░░░░██████╗░███████╗██╗░░░██╗
+██╔══██╗██╔══██╗██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░░░██║
+██████╔╝██████╔╝██████╔╝██║░░░░░██║░░██║█████╗░░╚██╗░██╔╝
+██╔═══╝░██╔══██╗██╔═══╝░██║░░░░░██║░░██║██╔══╝░░░╚████╔╝░
+██║░░░░░██║░░██║██║░░░░░███████╗██████╔╝███████╗░░╚██╔╝░░
+╚═╝░░░░░╚═╝░░╚═╝╚═╝░░░░░╚══════╝╚═════╝░╚══════╝░░░╚═╝░░░
+
 Product Diagnostic Tool V3 (Modified by prpldev, original creator printersofa)
 
 --]]
@@ -13,6 +20,7 @@ local marketplaceservice = game:GetService("MarketplaceService")
 local groupservice = game:GetService("GroupService")
 local status = gui.Background.Window.Status
 local LogService = game:GetService("LogService")
+local ButtonInformation = {nil,nil} -- {State,Decision}
 
 -- literally just takes the inputted string and decides what color its assigned too
 function decideColor(color)
@@ -217,10 +225,22 @@ function diag.runDiagnostics()
 		table.insert(resultscode, 1)
 	else
 		addItem("httpoff","HTTP Requests are not enabled.","red")
-		game.HttpService.HttpEnabled = true
-		addItem("info","Whitehill Diagnostics has automatically enabled HTTP Requests.","blue")
-		addItem("httpon","HTTP Requests are now enabled.","green")
-		table.insert(resultscode, 0)
+		ButtonState = {"HTTP",nil}
+		gui.Background.Window.SelectionButtons.Approve.Visible = true
+		gui.Background.Window.SelectionButtons.Deny.Visible = true
+		gui.Background.Window.SupportCode.Title.Text = "Give this tool access to change <b>HTTPServices</b>?"
+		while gui.Background.Window.SelectionButtons.Approve.Visible do wait() end
+		gui.Background.Window.SupportCode.Title.Text = ""
+		gui.Background.Window.SelectionButtons.Approve.Visible = false
+		gui.Background.Window.SelectionButtons.Deny.Visible = false
+		if ButtonState[2] == true then
+			game.HttpService.HttpEnabled = true
+			addItem("info","Whitehill Diagnostics has automatically enabled HTTP Requests.","blue")
+			addItem("httpon","HTTP Requests are now enabled.","green")
+			table.insert(resultscode, 1)
+		elseif ButtonState[2] == false then
+			table.insert(resultscode, 0)
+		end
 	end
 	task.wait(2)
 	status.Text = status.Text .. " Done"
@@ -452,8 +472,16 @@ function diag.runDiagnostics()
 	table.clear(heldLicenses)
 end
 
-function diag.shareSettings()
-	-- later implementation when approved by management
+gui.Background.Window.SelectionButtons.Approve:Connect() = function()
+	if ButtonState[1] ~= nil then
+		ButtonState[2] == true
+	end
+end
+
+gui.Background.Window.SelectionButtons.Deny:Connect() = function()
+	if ButtonState[1] ~= nil then
+		ButtonState[2] == false
+	end
 end
 
 return diag
