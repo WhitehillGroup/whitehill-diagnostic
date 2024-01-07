@@ -235,7 +235,8 @@ function diag.runDiagnostics()
 		gui.Background.Window.SupportCode.Title.Visible = false
 		if ButtonState[2] == true then
 			game.HttpService.HttpEnabled = true
-			addItem("info","Whitehill Diagnostics has automatically enabled HTTP Requests.","blue")
+			addItem("info","The user granted this tool HTTPServices permissions.","blue")
+			addItem("info","Whitehill Diagnostics has toggled HTTP Requests.","blue")
 			addItem("httpon","HTTP Requests are now enabled.","green")
 			table.insert(resultscode, 1)
 		elseif ButtonState[2] == false then
