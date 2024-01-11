@@ -20,7 +20,7 @@ local marketplaceservice = game:GetService("MarketplaceService")
 local groupservice = game:GetService("GroupService")
 local status = gui.Background.Window.Status
 local LogService = game:GetService("LogService")
-local ButtonInformation = {nil,nil} -- {State,Decision}
+local ButtonState = {nil,nil} -- {State,Decision}
 
 -- literally just takes the inputted string and decides what color its assigned too
 function decideColor(color)
