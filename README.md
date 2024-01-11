@@ -6,10 +6,11 @@
 
 > [!IMPORTANT]
 > Features:
-> - Checks for collission & weld issues with DWProx doors (@WhitehillGroup)
+> - Checks for collission & weld issues with DWProx doors.
 > - Checks for installed products with no associated Axon license.
 > - Checks for non-axon licensing (AutoPro + KONE Turnstiles).
 > - Able to assist users turn on HTTP via a prompt.
+> - Partial SCO V3 support.
 
 > [!NOTE]
 > To-Do:
