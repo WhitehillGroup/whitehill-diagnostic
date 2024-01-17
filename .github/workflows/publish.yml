@@ -1,0 +1,34 @@
+name: publish
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+
+        - name: Setup aftman
+          uses: ok-nick/setup-aftman@v0.4.2
+
+        - name: Generate project name
+          id: gen_name
+          env:
+            GIT_HASH: ${{ github.sha }}
+          run: 'echo "output_filename=diagtool_$(git rev-parse --short "$GIT_HASH")" >> "$GITHUB_OUTPUT"'
+
+        - name: Build Roblox model
+          run: rojo build -o ${{ steps.gen_name.outputs.output_name }}.rbxm
+
+        - name: Upload artefacts
+          uses: actions/upload-artifact@v4.0.0
+          with:
+            name: ${{ steps.gen_name.outputs.output_name }}
+            path: ${{ steps.gen_name.outputs.output_name }}.rbxm
