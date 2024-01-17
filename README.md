@@ -3,6 +3,16 @@
 
 This tool has been developed by @prpldev to allow Whitehill Support staff to identify common issues when utilising Whitehill products.
 
+This tool builds using Rojo
+
+You need to have Rojo 7 installed - this can be done through [Aftman](https://github.com/LPGhatguy/aftman)
+
+To install Rojo:
+`aftman install`
+
+To build this tool:
+`rojo build -o module.rbxm`
+
 > [!IMPORTANT]
 > Features:
 > - Checks for collission & weld issues with DWProx doors.
