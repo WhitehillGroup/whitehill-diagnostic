@@ -1,7 +1,7 @@
 # Whitehill Product Diagnostic
 ## An official tool created for streamlined support.
 
-This tool has been developed by @prpldev to allow Whitehill Support staff to identify common issues when utilising Whitehill products.
+This tool was developed by @prpl.dev to allow Whitehill Support staff to identify common issues when utilising Whitehill products.
 
 ### Build instructions
 You need to have Rojo 7 installed - this can be done through [Aftman](https://github.com/LPGhatguy/aftman)
