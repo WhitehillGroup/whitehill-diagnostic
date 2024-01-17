@@ -3,8 +3,7 @@
 
 This tool has been developed by @prpldev to allow Whitehill Support staff to identify common issues when utilising Whitehill products.
 
-This tool builds using Rojo
-
+### Build instructions
 You need to have Rojo 7 installed - this can be done through [Aftman](https://github.com/LPGhatguy/aftman)
 
 To install Rojo:
