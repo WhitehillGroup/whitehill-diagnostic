@@ -1,8 +1,7 @@
 # Whitehill Product Diagnostic
-## A non-official tool created by me for streamlined support.
+## An official tool created for streamlined support.
 
-> [!CAUTION]
-> This tool is <b>NOT OFFICIAL</b> and was created by me <b>without</b> management supervision.
+This tool has been developed by @prpldev to allow Whitehill Support staff to identify common issues when utilising Whitehill products.
 
 > [!IMPORTANT]
 > Features:

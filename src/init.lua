@@ -1,16 +1,9 @@
 --[[
 
-██████╗░██████╗░██████╗░██╗░░░░░██████╗░███████╗██╗░░░██╗
-██╔══██╗██╔══██╗██╔══██╗██║░░░░░██╔══██╗██╔════╝██║░░░██║
-██████╔╝██████╔╝██████╔╝██║░░░░░██║░░██║█████╗░░╚██╗░██╔╝
-██╔═══╝░██╔══██╗██╔═══╝░██║░░░░░██║░░██║██╔══╝░░░╚████╔╝░
-██║░░░░░██║░░██║██║░░░░░███████╗██████╔╝███████╗░░╚██╔╝░░
-╚═╝░░░░░╚═╝░░╚═╝╚═╝░░░░░╚══════╝╚═════╝░╚══════╝░░░╚═╝░░░
+Whitehill Product Diagnostic Tool V3
+(Modified by prpldev, original creator printersofa)
 
-Product Diagnostic Tool V3 (Modified by prpldev, original creator printersofa)
-
---]]
-
+]]--
 
 local diag = {}
 local gui = script.WHDT
@@ -281,7 +274,7 @@ function diag.runDiagnostics()
 
 	task.wait(2)
 	status.Text = status.Text .. " Done"
-	task.wait(1)	
+	task.wait(1)
 
 	-- non owned but installed products check/licensing (prpldev)
 	status.Text = "Checking licenses (this could take several minutes)..."
@@ -402,7 +395,7 @@ function diag.runDiagnostics()
 	end
 	task.wait(2)
 	status.Text = status.Text .. " Done"
-	task.wait(1)	
+	task.wait(1)
 
 	-- whitehill door collision check (printersofa)
 	status.Text = "Checking for collisions (this could take several minutes)..."
