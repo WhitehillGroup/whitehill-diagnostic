@@ -236,7 +236,7 @@ function diag.runDiagnostics()
 			addItem("info","The user granted this tool HTTPServices permissions.","blue")
 			addItem("info","Whitehill Diagnostic Tool has toggled HTTP Requests.","blue")
 			addItem("httpon","HTTP Requests are now enabled.","green")
-			table.insert(resultscode, 1)
+			table.insert(resultscode, 2)
 		elseif ButtonState[2] == false then
 			table.insert(resultscode, 0)
 		end
@@ -290,7 +290,7 @@ function diag.runDiagnostics()
 			addItem("warn","Game has the <b>Mainbanks</b> system installed but game owner does not hold a license.","yellow")
 			table.insert(resultscode,1)
 		else
-			table.insert(resultscode,0)
+			table.insert(resultscode,2)
 		end
 	else
 		table.insert(resultscode,0)
@@ -310,7 +310,7 @@ function diag.runDiagnostics()
 			addItem("warn","Game has the <b>CafePOS Lite</b> system installed but game owner does not hold a license.","yellow")
 			table.insert(resultscode,1)
 		else
-			table.insert(resultscode,0)
+			table.insert(resultscode,2)
 		end
 	else
 		table.insert(resultscode,0)
@@ -320,7 +320,7 @@ function diag.runDiagnostics()
 			addItem("warn","Game has the <b>SCO V3</b> system installed but game owner does not hold a license.","yellow")
 			table.insert(resultscode,1)
 		else
-			table.insert(resultscode,0)
+			table.insert(resultscode,2)
 		end
 	else
 		table.insert(resultscode,0)
@@ -330,7 +330,7 @@ function diag.runDiagnostics()
 			addItem("warn","Game has the <b>JSM EAS</b> system installed but game owner does not hold a license.","yellow")
 			table.insert(resultscode,1)
 		else
-			table.insert(resultscode,0)
+			table.insert(resultscode,2)
 		end
 	else
 		table.insert(resultscode,0)
@@ -358,7 +358,7 @@ function diag.runDiagnostics()
 			end
 		end
 	else
-		table.insert(resultscode,0)
+		table.insert(resultscode,2)
 	end
 
 	task.wait(2)
