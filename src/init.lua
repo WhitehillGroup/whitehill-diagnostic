@@ -262,6 +262,7 @@ function diag.runDiagnostics()
 				for _, entry in ipairs(jsonResponse.data) do
 					local productName = entry.product.name
 					table.insert(heldLicenses,tostring(productName))
+					table.insert(resultscode,1)
 				end
 				addItem("yes","Axon license check successful.","green")
 			else
