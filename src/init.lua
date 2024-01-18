@@ -146,6 +146,7 @@ function diag.runDiagnostics()
 		table.insert(resultscode, 0)
 	else
 		addItem("no","An error occured while checking this game's creator type.","red")
+		table.insert(resultscode, 2)
 	end
 	task.wait(2)
 	status.Text = status.Text .. " Done"
@@ -173,8 +174,10 @@ function diag.runDiagnostics()
 	else
 		if game.CreatorId ~= 998796 and game.CreatorId ~= 0 and game.CreatorId ~= nil then
 			addItem("no","An error occured while checking this game's creator type.","red")
+			table.insert(resultscode, 2)
 		else
 			addItem("warn","License checks cannot be performed on unpublished games.","yellow")
+			table.insert(resultscode, 2)
 		end
 	end
 	task.wait(2)
@@ -203,8 +206,10 @@ function diag.runDiagnostics()
 	else
 		if game.CreatorId ~= 998796 and game.CreatorId ~= 0 and game.CreatorId ~= nil then
 			addItem("no","An error occured while checking this game's creator type.","red")
+			table.insert(resultscode, 2)
 		else
 			addItem("warn","License checks cannot be performed on unpublished games.","yellow")
+			table.insert(resultscode, 2)
 		end
 	end
 	task.wait(2)
@@ -229,7 +234,7 @@ function diag.runDiagnostics()
 		if ButtonState[2] == true then
 			game.HttpService.HttpEnabled = true
 			addItem("info","The user granted this tool HTTPServices permissions.","blue")
-			addItem("info","Whitehill Diagnostics has toggled HTTP Requests.","blue")
+			addItem("info","Whitehill Diagnostic Tool has toggled HTTP Requests.","blue")
 			addItem("httpon","HTTP Requests are now enabled.","green")
 			table.insert(resultscode, 1)
 		elseif ButtonState[2] == false then
@@ -270,6 +275,7 @@ function diag.runDiagnostics()
 			end
 		else
 			addItem("no","Axon license check failed.","red")
+			table.insert(resultscode, 2)
 		end
 	end
 
@@ -445,7 +451,7 @@ function diag.runDiagnostics()
 		resultsstring = resultsstring..tostring(v)
 	end
 
-	resultsstring = tonumber(resultsstring,2)
+	resultsstring = string.format("%x", tonumber(resultsstring))
 	resultsstring = resultsstring.."-"..rnum
 
 	-- display code + title
@@ -457,7 +463,7 @@ function diag.runDiagnostics()
 	status.Text = "Diagnostic Complete"
 
 	addItem("info","The diagnostics check is now complete and will close in 10 seconds.","blue")
-
+	
 	-- reset stuff for next usage on game incase its the same session
 	task.wait(10)
 	for i,v in pairs(gui.Background.Window.HolderFrame.ScrollingFrame:GetChildren()) do
